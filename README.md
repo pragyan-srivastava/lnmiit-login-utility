@@ -21,7 +21,6 @@ It's designed to be:
     ```bash
     git clone <repository-url>
     ```
-    (You will need to create a GitHub repository and upload the files first).
 2.  Open your Chrome/Brave browser and navigate to `chrome://extensions`.
 3.  Enable **Developer mode** (toggle switch in the top-right corner).
 4.  Click **Load unpacked**.
