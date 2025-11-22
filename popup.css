@@ -1,0 +1,242 @@
+:root {
+    --primary-color: #0052D4;
+    --primary-color-light: #4364f7;
+    --primary-color-dark: #0052D4;
+    --background-color: #f2f5f8;
+    --form-background: #ffffff;
+    --text-color: #333;
+    --label-color: #555;
+    --border-color: #d0d7de;
+    --success-color: #28a745;
+    --font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    margin: 0;
+    width: 340px;
+    color: var(--text-color);
+}
+
+.container {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-container {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-bottom is now on header-container */
+}
+
+.logo {
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+}
+
+h2 {
+    color: var(--primary-color-dark);
+    margin: 0;
+    margin-top: 10px; /* Shift heading down */
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.tagline {
+    font-size: 14px;
+    text-align: center;
+    color: #6a737d;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--label-color);
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: var(--form-background);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.note {
+    font-size: 12px;
+    color: #6c757d;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+button {
+    background: linear-gradient(45deg, var(--primary-color-light), var(--primary-color-dark));
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(0, 82, 212, 0.2);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 82, 212, 0.3);
+}
+
+#status {
+    margin-top: 15px;
+    text-align: center;
+    color: var(--success-color);
+    font-size: 14px;
+    font-weight: 500;
+    min-height: 18px;
+}
+
+.shortcut-note {
+    margin-top: 25px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.shortcut-note a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.shortcut-note a:hover {
+    text-decoration: underline;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    --primary-color: #007bff;
+    --primary-color-light: #3390ff;
+    --primary-color-dark: #0056b3;
+    --background-color: #1c2128;
+    --form-background: #2d333b;
+    --text-color: #c9d1d9;
+    --label-color: #8b949e;
+    --border-color: #444c56;
+    --success-color: #238636;
+}
+
+body.dark-mode h2 {
+    color: var(--primary-color-light);
+}
+
+body.dark-mode .tagline,
+body.dark-mode .note,
+body.dark-mode #password-note {
+    color: var(--label-color);
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="password"] {
+    background-color: var(--form-background);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+body.dark-mode input[type="text"]:focus,
+body.dark-mode input[type="password"]:focus {
+    box-shadow: 0 0 0 3px rgba(51, 144, 255, 0.3);
+}
+
+body.dark-mode button {
+    background: linear-gradient(45deg, var(--primary-color-light), var(--primary-color));
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+}
+
+body.dark-mode button:hover {
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+}
+
+body.dark-mode .shortcut-note a {
+    color: var(--primary-color-light);
+}
+
+/* Theme Switch Styles */
+.theme-switch-wrapper {
+    position: absolute;
+    top: 0; /* Moved slightly higher */
+    right: 0;
+    display: flex;
+    align-items: center;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 18px; /* Smaller height */
+    position: relative;
+    width: 34px; /* Smaller width */
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 18px; /* Adjusted border-radius for smaller size */
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 3px;
+    content: "";
+    height: 12px; /* Smaller height */
+    left: 3px;
+    position: absolute;
+    transition: .4s;
+    width: 12px; /* Smaller width */
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color-light);
+}
+
+input:checked + .slider:before {
+    transform: translateX(16px); /* Adjusted transform for smaller size */
+}

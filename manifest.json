@@ -1,0 +1,40 @@
+{
+  "name": "LNMIIT Login Utility",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "A simple extension to automate login to the LNMIIT network.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "notifications",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "https://172.22.2.6/"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "commands": {
+    "execute_login": {
+      "suggested_key": {
+        "default": "Alt+L"
+      },
+      "description": "Performs automatic login to LNMIIT network"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+}
