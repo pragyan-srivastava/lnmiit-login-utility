@@ -1,6 +1,6 @@
 # LNMIIT Login Utility
 
-![Extension Screenshot](images/screenshot.png =250x) <!-- You should replace this with an actual screenshot -->
+![Extension Screenshot](images/screenshot.png=250x) <!-- You should replace this with an actual screenshot -->
 
 A lightweight and efficient browser extension for Chrome and Chromium-based browsers to automate the login process for the LNMIIT (LNM Institute of Information Technology) network portal.
 
