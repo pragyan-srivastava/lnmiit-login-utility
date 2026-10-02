@@ -26,12 +26,10 @@ cd lnmiit-login-utility
 ```
 
 ### 2. Load Extension in Browser
-- **Option A (Instant)**: Run `install.bat` (Windows) or `./install.sh` (macOS/Linux) and choose option `[2]` or `[1]`.
-- **Option B (Manual)**:
-  1. Open Chrome/Brave/Edge and navigate to `chrome://extensions`.
-  2. Enable **Developer mode** (top-right toggle switch).
-  3. Click **Load unpacked** (top-left).
-  4. Select the project repository directory.
+1. Open Chrome/Brave/Edge and navigate to `chrome://extensions`.
+2. Enable **Developer mode** (top-right toggle switch).
+3. Click **Load unpacked** (top-left).
+4. Select the project repository directory.
 
 ### 3. Making Changes
 - Modifying `popup.html`, `popup.css`, or `popup.js`: Reopen the popup to see changes instantly.
@@ -44,21 +42,17 @@ cd lnmiit-login-utility
 ```
 ├── manifest.json         # Extension manifest (v3)
 ├── popup.html            # Extension popup UI structure
-├── popup.css             # Glassmorphic styling & theme tokens
-├── popup.js              # Popup interaction & storage controller
+├── popup.css             # Extension styling & theme tokens
+├── popup.js              # Extension popup controller & storage
 ├── background.js         # Service worker: shortcuts & navigation hooks
 ├── content.js            # Injected script: DOM autofill & login trigger
-├── install.bat           # Windows 1-click interactive batch installer
-├── install.ps1           # Windows PowerShell installer with colored CLI
-├── install.sh            # macOS & Linux bash installer
 ├── scripts/
 │   ├── package.bat       # Windows packaging script
 │   ├── package.ps1       # PowerShell release packager
 │   └── package.sh        # POSIX bash release packager
 ├── docs/
-│   ├── INSTALLATION.md   # Comprehensive multi-browser install guide
 │   └── SECURITY.md       # Security & privacy audit documentation
-└── images/               # Extension icons and promotional banners
+└── images/               # Extension icons and assets
 ```
 
 ---

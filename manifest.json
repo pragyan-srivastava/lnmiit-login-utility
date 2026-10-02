@@ -1,8 +1,8 @@
 {
   "name": "LNMIIT Login Utility",
-  "version": "1.2.0",
+  "version": "1.0",
   "manifest_version": 3,
-  "description": "Lightning-fast automated login utility for the LNMIIT campus network portal.",
+  "description": "A simple extension to automate login to the LNMIIT network.",
   "permissions": [
     "storage",
     "activeTab",
@@ -11,7 +11,7 @@
     "webNavigation"
   ],
   "host_permissions": [
-    "*://172.22.2.6/*"
+    "https://172.22.2.6/"
   ],
   "background": {
     "service_worker": "background.js"
@@ -27,10 +27,9 @@
   "commands": {
     "execute_login": {
       "suggested_key": {
-        "default": "Alt+L",
-        "mac": "Alt+L"
+        "default": "Alt+L"
       },
-      "description": "Trigger automated login to the LNMIIT network"
+      "description": "Performs automatic login to LNMIIT network"
     }
   },
   "icons": {
