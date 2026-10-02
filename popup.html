@@ -1,44 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LNMIIT Login Utility</title>
     <link rel="stylesheet" type="text/css" href="popup.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="header-container">
-            <div class="theme-switch-wrapper">
-                <label class="theme-switch" for="theme-checkbox">
-                    <input type="checkbox" id="theme-checkbox" />
-                    <div class="slider round"></div>
+    <div class="popup-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="logo-box">
+                    <img src="images/icon48.png" alt="LNMIIT Logo" class="logo">
+                </div>
+                <div class="title-group">
+                    <div class="title-row">
+                        <h1>LNMIIT Login</h1>
+                        <span class="version-tag">v1.2</span>
+                    </div>
+                    <p class="subtitle">Instant campus network pass</p>
+                </div>
+            </div>
+            <button id="theme-toggle" class="icon-btn" title="Toggle Theme" aria-label="Toggle Theme">
+                <svg id="theme-icon-sun" class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg id="theme-icon-moon" class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </header>
+
+        <!-- Network / Portal Status Banner -->
+        <div class="status-banner" id="status-banner">
+            <div class="status-indicator">
+                <span class="pulse-dot" id="pulse-dot"></span>
+                <span class="status-label" id="status-label">Checking network...</span>
+            </div>
+            <button id="btn-open-portal" class="text-action-btn">
+                <span>Open Portal</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mini-icon">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Credentials Form -->
+        <main class="form-container">
+            <div class="input-group">
+                <label for="username">Roll / Username</label>
+                <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <input type="text" id="username" autocomplete="username" placeholder="e.g. 23ucc001" spellcheck="false" />
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="label-row">
+                    <label for="password">Network Password</label>
+                    <span id="saved-badge" class="badge-saved">Saved</span>
+                </div>
+                <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <input type="password" id="password" autocomplete="current-password" placeholder="Enter password" />
+                    <button type="button" id="toggle-password" class="icon-toggle-btn" title="Toggle password visibility" aria-label="Toggle password visibility">
+                        <svg id="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <svg id="eye-off-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                    </button>
+                </div>
+                <p id="password-hint" class="field-hint">Leave blank to retain current saved password</p>
+            </div>
+
+            <!-- Auto-Login Preference Switch -->
+            <div class="switch-row">
+                <div class="switch-info">
+                    <span class="switch-title">⚡ Auto-Login on Portal Load</span>
+                    <span class="switch-desc">Submit automatically when portal opens</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="autologin-checkbox" checked />
+                    <span class="toggle-slider"></span>
                 </label>
             </div>
-            <div class="header">
-                <img src="images/icon48.png" alt="icon" class="logo">
-                <h2>LNMIIT Login Utility</h2>
-            </div>
-        </div>
-        <p class="tagline">Blink and you'll miss it. Your one-press pass to the network.</p>
-        
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username">
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter new password to save">
-            <p id="password-note" class="note"></p>
-        </div>
-        
-        <button id="save">Save Credentials</button>
-        <p id="status"></p>
 
-        <p class="shortcut-note note">
-            Login Shortcut: <strong>Alt+L</strong><br>
-            You can customize this at <a href="#" id="shortcut-link">chrome://extensions/shortcuts</a>.
-        </p>
+            <!-- Primary Buttons -->
+            <div class="action-buttons">
+                <button type="button" id="btn-save" class="btn btn-primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Save Credentials</span>
+                </button>
+                <button type="button" id="btn-login-now" class="btn btn-secondary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                    <span>Trigger Login Now</span>
+                </button>
+            </div>
+
+            <!-- Feedback Toast -->
+            <div id="feedback-msg" class="feedback-msg"></div>
+        </main>
+
+        <!-- Shortcut & Utility Bar -->
+        <div class="shortcut-box">
+            <div class="shortcut-info">
+                <span>Keyboard Shortcut:</span>
+                <span class="kbd-badge"><kbd>Alt</kbd> + <kbd>L</kbd></span>
+            </div>
+            <a href="#" id="change-shortcut" class="link-subtle" title="Configure Shortcut">Change</a>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="privacy-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shield-icon">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span>100% Offline & Stored Locally</span>
+            </div>
+            <div class="footer-links">
+                <button type="button" id="btn-clear" class="btn-link danger-link">Clear</button>
+                <span class="divider">•</span>
+                <a href="https://github.com/pragyan-srivastava/lnmiit-login-utility" target="_blank" class="btn-link github-link">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="gh-mini-icon">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </footer>
     </div>
+
     <script src="popup.js"></script>
 </body>
 </html>
